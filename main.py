@@ -54,7 +54,6 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
     parent_post = relationship("BlogPost", back_populates="comments")
 
-
 #
 # Only Use ONCE - while creating DB and Tables
 # with app.app_context():
