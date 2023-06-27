@@ -58,9 +58,9 @@ class Comment(db.Model):
     parent_post = relationship("BlogPost", back_populates="comments")
 
 
-# Only Use ONCE - while creating DB and Tables
-with app.app_context():
-    db.create_all()
+# # Only Use ONCE - while creating DB and Tables
+# with app.app_context():
+#     db.create_all()
 
 # Gravatar stuff
 gravatar = Gravatar(app,
