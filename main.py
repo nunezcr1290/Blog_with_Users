@@ -12,7 +12,6 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 import os
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 ckeditor = CKEditor(app)
@@ -21,7 +20,7 @@ Bootstrap(app)
 ##CONNECT TO LOCAL DB
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 
-##CONNECT TO RENDER ONLINE DB
+##CONNECT TO RENDER.COM ( ONLINE DB )
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
