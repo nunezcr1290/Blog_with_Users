@@ -18,9 +18,12 @@ app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
-##CONNECT TO DB
+##CONNECT TO LOCAL DB
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",  "sqlite:///blog.db")
+
+##CONNECT TO RENDER ONLINE DB
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -30,7 +33,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(50), nullable=False)
     name = db.Column(db.String(100), nullable=False)
-    password = db.Column(db.String(50))
+    password = db.Column(db.String(150))
     posts = relationship("BlogPost", back_populates="author")
     comments = relationship("Comment", back_populates="c_author")
 
